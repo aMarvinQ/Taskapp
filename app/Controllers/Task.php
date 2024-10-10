@@ -28,14 +28,25 @@ class Task extends BaseController
         return view('Task/new');
     }
 
-    public function getCreate()
+    public function postCreate()
     {
         $model = new \App\Models\TaskModel;
 
-        $model->insert([
+        $result = $model->insert([
             'description' => $this->request->getPost('description')
         ]);
 
-        dd($model->insertID);
-    }
+        if($result === false){
+
+            return redirect()->back()
+                            ->with('errors', $model->errors())
+                            ->with('warning', 'Invalid data');
+
+        } else {
+
+            return redirect()->to("/task/show/$result")
+                            ->with('info', 'Task created successfully');
+
+        }
+    } 
 }
