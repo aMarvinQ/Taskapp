@@ -71,11 +71,19 @@ class Task extends BaseController
     {
         $model = new \App\Models\TaskModel;
 
-        $result = $model->update($id, [
-            'description' => $this->request->getPost('description')
-        ]);
+        $task = $model->find($id);
 
-        if ($result)
+        $task->fill($this->request->getPost());
+
+        if( ! $task->hasChanged())
+        {
+
+            return redirect()->back()
+                            ->with('warning', 'Nothing to update')
+                            ->withInput();
+        }
+
+        if ($model->save($task))
         {
 
             return redirect()->to("/task/show/$id")
