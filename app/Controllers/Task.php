@@ -25,7 +25,11 @@ class Task extends BaseController
 
     public function getNew()
     {
-        return view('Task/new');
+        $task = new \App\Entities\TaskE;
+
+        return view('Task/new', [
+            'task' => $task
+        ]);
     }
 
     public function postCreate()
@@ -40,7 +44,8 @@ class Task extends BaseController
 
             return redirect()->back()
                             ->with('errors', $model->errors())
-                            ->with('warning', 'Invalid data');
+                            ->with('warning', 'Invalid data')
+                            ->withInput();
 
         } else {
 
@@ -49,4 +54,38 @@ class Task extends BaseController
 
         }
     } 
+
+    public function getEdit($id)
+    {
+        $model = new \App\Models\TaskModel;
+
+        $task = $model->find($id);
+
+        return view('Task/edit', [
+            'task' => $task
+        ]);
+    }
+
+    public function postUpdate($id)
+    {
+        $model = new \App\Models\TaskModel;
+
+        $result = $model->update($id, [
+            'description' => $this->request->getPost('description')
+        ]);
+
+        if ($result)
+        {
+
+            return redirect()->to("/task/show/$id")
+                            ->with('info', 'Task updated succesfully');
+        }
+        else
+        {
+            return redirect()->back()
+                            ->with('errors', $model->errors())
+                            ->with('warning', 'Invalid data')
+                            ->withInput();
+        }
+    }
 }

@@ -8,6 +8,8 @@ class TaskModel extends \CodeIgniter\Model
 
     protected $allowedFields = ['description'];
 
+    protected $returnType = 'App\Entities\TaskE';
+
     protected $validationRules = [
         'description' => 'required'
     ];
