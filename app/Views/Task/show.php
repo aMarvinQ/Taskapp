@@ -22,5 +22,6 @@
     </dl>
 
 <a href="<?= site_url('/task/edit/' . $task->id) ?>">Edit</a>
+<a href="<?= site_url('/task/delete/' . $task->id) ?>">Delete</a>
 
 <?= $this->endSection() ?>

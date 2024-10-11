@@ -10,6 +10,8 @@ class TaskModel extends \CodeIgniter\Model
 
     protected $returnType = 'App\Entities\TaskE';
 
+    protected $useTimestamps = true;
+
     protected $validationRules = [
         'description' => 'required'
     ];
