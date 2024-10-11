@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Entities\TaskE;
+
 class Task extends BaseController
 {
     public function getIndex()
@@ -25,7 +27,7 @@ class Task extends BaseController
 
     public function getNew()
     {
-        $task = new \App\Entities\TaskE;
+        $task = new TaskE;
 
         return view('Task/new', [
             'task' => $task
@@ -36,21 +38,20 @@ class Task extends BaseController
     {
         $model = new \App\Models\TaskModel;
 
-        $result = $model->insert([
-            'description' => $this->request->getPost('description')
-        ]);
+        $task = new TaskE($this->request->getPost());
 
-        if($result === false){
+        if ($model->insert($task))
+        {
+
+            return redirect()->to("/task/show/{$model->insertID}")
+            ->with('info', 'Task created successfully');
+
+        } else {
 
             return redirect()->back()
                             ->with('errors', $model->errors())
                             ->with('warning', 'Invalid data')
                             ->withInput();
-
-        } else {
-
-            return redirect()->to("/task/show/$result")
-                            ->with('info', 'Task created successfully');
 
         }
     } 
