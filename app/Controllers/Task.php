@@ -13,14 +13,14 @@ class Task extends BaseController
         $this->model = new \App\Models\TaskModel;
     }
 
-    public function getIndex()
+    public function index()
     {
         $data = $this->model->findAll();
 
         return view('Task/index', ['tasks' => $data]);
     }
 
-    public function getShow($id)
+    public function show($id)
     {
 
         $task = $this->getTaskOr404($id);
@@ -30,7 +30,7 @@ class Task extends BaseController
         ]);
     }
 
-    public function getNew()
+    public function new()
     {
         $task = new TaskE;
 
@@ -39,7 +39,7 @@ class Task extends BaseController
         ]);
     }
 
-    public function postCreate()
+    public function create()
     {
 
         $task = new TaskE($this->request->getPost());
@@ -48,19 +48,19 @@ class Task extends BaseController
         {
 
             return redirect()->to("/task/show/{$this->model->insertID}")
-            ->with('info', 'Task created successfully');
+            ->with('info', 'Tarea creada satisfactoriamente.');
 
         } else {
 
             return redirect()->back()
                             ->with('errors', $this->model->errors())
-                            ->with('warning', 'Invalid data')
+                            ->with('warning', 'Datos invalidos.')
                             ->withInput();
 
         }
     } 
 
-    public function getEdit($id)
+    public function edit($id)
     {
 
         $task = $this->getTaskOr404($id);
@@ -70,7 +70,7 @@ class Task extends BaseController
         ]);
     }
 
-    public function postUpdate($id)
+    public function update($id)
     {
 
         $task = $this->getTaskOr404($id);
@@ -81,7 +81,7 @@ class Task extends BaseController
         {
 
             return redirect()->back()
-                            ->with('warning', 'Nothing to update')
+                            ->with('warning', 'Nada que actulizar.')
                             ->withInput();
         }
 
@@ -89,28 +89,28 @@ class Task extends BaseController
         {
 
             return redirect()->to("/task/show/$id")
-                            ->with('info', 'Task updated succesfully');
+                            ->with('info', 'Tarea actualizada satisfactoriamente.');
         }
         else
         {
             return redirect()->back()
                             ->with('errors', $this->model->errors())
-                            ->with('warning', 'Invalid data')
+                            ->with('warning', 'Datos invalidos')
                             ->withInput();
         }
     }
 
-    public function postDelete($id)
+    public function delete($id)
     {
         $task = $this->getTaskOr404($id);
 
-        if ($this->request->getMethod() === 'post')
+        if ($this->request->getMethod() === 'POST')
         {
 
             $this->model->delete($id);
 
             return redirect()->to('/task/index')
-                            ->with('info', 'TaskDeleted');
+                            ->with('info', 'Tarea eliminada');
 
         }
 

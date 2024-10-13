@@ -1,10 +1,10 @@
 <?= $this->extend('layouts/default') ?>
 
-<?= $this->section('title') ?>Edit Task<?= $this->endSection() ?>
+<?= $this->section('title') ?>Edición<?= $this->endSection() ?>
 
 <?= $this->section('content') ?> 
 
-<h1>Edit Task</h1>
+<h1>Editar tarea</h1>
 
 <?php if (session()->has('errors')): ?>
     <ul>
@@ -18,8 +18,8 @@
 
     <?= $this->include('Task/form') ?>
 
-    <button>Save</button>
-    <a href="<?= site_url('/task/show/' . $task->id) ?>">Cancel</a>
+    <button>Guardar</button>
+    <a href="<?= site_url('/task/show/' . $task->id) ?>">Cancelar</a>
 
 </form>
 

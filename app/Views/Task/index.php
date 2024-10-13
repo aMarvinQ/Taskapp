@@ -1,12 +1,12 @@
 <?= $this->extend('layouts/default') ?>
 
-<?= $this->section('title') ?>Task<?= $this->endSection() ?>
+<?= $this->section('title') ?>Tareas<?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 
-    <h1>This is Task</h1>
+    <h1>Tareas</h1>
 
-    <a href="<?= site_url('/task/new') ?>">New task</a>
+    <a href="<?= site_url('/task/new') ?>">Nueva tarea</a>
 
     <ul>
         <?php foreach($tasks as $task): ?>
