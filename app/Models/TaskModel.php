@@ -6,7 +6,7 @@ class TaskModel extends \CodeIgniter\Model
 {
     protected $table = 'task';
 
-    protected $allowedFields = ['description'];
+    protected $allowedFields = ['description', 'user_id'];
 
     protected $returnType = 'App\Entities\TaskE';
 
@@ -22,10 +22,11 @@ class TaskModel extends \CodeIgniter\Model
         ]
     ];
 
-    public function getTaskByUserId($id)
+    public function paginateTaskByUserId($id)
     {
         return $this->where('user_id', $id)
-                    ->findAll();
+                    ->orderBy('created_at')
+                    ->paginate(2);
     }
 
     public function getTaskByUserId1($id, $user_id)

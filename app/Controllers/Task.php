@@ -8,20 +8,23 @@ class Task extends BaseController
 {
     private $model;
 
+    private $current_user;
+
     public function __construct()
     {
         $this->model = new \App\Models\TaskModel;
+        $this->current_user = service('auth')->getCurrentUser();
     }
 
     public function index()
     {
+        
+        $data = $this->model->paginateTaskByUserId($this->current_user->id);
 
-        $auth = service('auth');
-        $user = $auth->getCurrentUser();
-
-        $data = $this->model->getTaskByUserId($user->id);
-
-        return view('Task/index', ['tasks' => $data]);
+        return view('Task/index', [
+            'tasks' => $data,
+            'pager' => $this->model->pager
+        ]);
     }
 
     public function show($id)
@@ -47,6 +50,8 @@ class Task extends BaseController
     {
 
         $task = new TaskE($this->request->getPost());
+
+        $task->user_id = $this->current_user->id;
 
         if ($this->model->insert($task))
         {
@@ -79,7 +84,10 @@ class Task extends BaseController
 
         $task = $this->getTaskOr404($id);
 
-        $task->fill($this->request->getPost());
+        $post = $this->request->getPost();
+        unset($post['user_id']);
+
+        $task->fill($post);
 
         if( ! $task->hasChanged())
         {
@@ -125,8 +133,6 @@ class Task extends BaseController
 
     private function getTaskOr404($id)
     {
-        $user = service('auth')->getCurrentUser();
-
         // $task = $this->model->find($id);
 
         // if($task !== null && ($task->user_id !== $user->id)){
@@ -135,7 +141,7 @@ class Task extends BaseController
 
         // }
 
-        $task = $this->model->getTaskByUserId1($id, $user->id);
+        $task = $this->model->getTaskByUserId1($id, $this->current_user->id);
 
         if ($task === null)
         {

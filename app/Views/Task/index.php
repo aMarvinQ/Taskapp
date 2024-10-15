@@ -20,6 +20,8 @@
 
             <?php endforeach; ?>
         </ul>
+
+    <?= $pager->links() ?>
     <?php else: ?>
 
         <p>No se encuentran tareas.</p>
