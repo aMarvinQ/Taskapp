@@ -9,9 +9,11 @@
     <a href="<?= site_url("/signup") ?>">Registrate</a>
 
 
-    <?php if (session()->has('user_id')): ?>
+    <?php if (current_user()): ?>
 
         <p>Has iniciado sesión</p>
+
+        <p>¡Hola <?= esc(current_user()->name) ?>!</p>
 
         <a href="<?= site_url("/logout") ?>">Cerrar sesión</a>
 
