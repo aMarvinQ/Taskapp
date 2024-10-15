@@ -7,3 +7,5 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->get('/signup', 'Signup::new');
+$routes->get('/login', 'Login::new');
+$routes->get('/logout', 'Login::delete');
