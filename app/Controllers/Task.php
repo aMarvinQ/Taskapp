@@ -15,6 +15,7 @@ class Task extends BaseController
 
     public function index()
     {
+
         $data = $this->model->findAll();
 
         return view('Task/index', ['tasks' => $data]);

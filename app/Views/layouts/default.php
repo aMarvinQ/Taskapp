@@ -7,6 +7,24 @@
 </head>
 <body>
 
+    <a href="<?= site_url("/") ?>">Inicio</a>
+
+    <?php if (current_user()): ?>
+
+        <p>¡Hola <?= esc(current_user()->name) ?>!</p>
+
+        <a href="<?= site_url("/task") ?>">Tareas</a>
+
+        <a href="<?= site_url("/logout") ?>">Cerrar sesión</a>
+
+    <?php else: ?>
+
+        <a href="<?= site_url("/signup") ?>">Registrate</a>
+
+        <a href="<?= site_url("/login") ?>">Inicia sesión</a>
+
+    <?php endif; ?>
+
     <?php if(session()->has('warning')): ?>
         <div class="warning">
             <?= session('warning') ?>
