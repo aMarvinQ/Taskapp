@@ -14,6 +14,7 @@ use CodeIgniter\Filters\PerformanceMetrics;
 use CodeIgniter\Filters\SecureHeaders;
 use App\Filters\LoginFilter;
 use App\Filters\GuestFilter;
+use App\Filters\AdminFilter;
 
 class Filters extends BaseFilters
 {
@@ -38,6 +39,7 @@ class Filters extends BaseFilters
         'performance'   => PerformanceMetrics::class,
         'login'         =>LoginFilter::class,
         'guest'         =>GuestFilter::class,
+        'admin'         =>AdminFilter::class,
     ];
 
     /**
@@ -111,6 +113,11 @@ class Filters extends BaseFilters
         'login' => [
             'before' => [
                 'task(/*)?',
+                'admin/*'
+            ]
+        ],
+        'admin' => [
+            'before' => [
                 'admin/*'
             ]
         ]

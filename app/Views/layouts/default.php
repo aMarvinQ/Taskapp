@@ -13,6 +13,10 @@
 
         <p>¡Hola <?= esc(current_user()->name) ?>!</p>
 
+        <?php if (current_user()->is_admin): ?>
+                <a href="<?= site_url("/admin/users") ?>">Usuarios</a>
+        <?php endif; ?>
+
         <a href="<?= site_url("/task") ?>">Tareas</a>
 
         <a href="<?= site_url("/logout") ?>">Cerrar sesión</a>
