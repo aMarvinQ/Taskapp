@@ -11,6 +11,9 @@
 <div>
     <label for="password">Contraseña</label>
     <input type="password" name="password">
+    <?php if ($user->id): ?>
+        <p>Dejalo en blanco para conservar la contraseña.</p>
+    <?php endif; ?>
 </div>
 
 <div>
