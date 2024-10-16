@@ -14,6 +14,7 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Correo Electrónico</th>
+                    <th>Activo</th>
                     <th>Administrador</th>
                     <th>Creado el</th>
                 </tr>
@@ -27,6 +28,7 @@
                             </a>
                         </td>
                         <td><?= esc($user->email) ?></td>
+                        <td><?= $user->is_active ? 'Si' : 'No' ?></td>
                         <td><?= $user->is_admin ? 'Si' : 'No' ?></td>
                         <td><?= $user->created_at ?></td>
                     </tr>

@@ -14,6 +14,9 @@
         <dt>Correo Electrónico</dt>
         <dd><?= esc($user->email) ?></dd>
 
+        <dt>Activo</dt>
+        <dd><?= $user->is_active ? 'Si' : 'No' ?></dd>
+
         <dt>Administrador</dt>
         <dd><?= $user->is_admin ? 'Si' : 'No' ?></dd>
 
