@@ -15,6 +15,8 @@ class Signup extends BaseController
 
         $model = new \App\Models\UserModel;
 
+        $user->startActivation();
+
         if ($model->insert($user)) {
 
             return redirect()->to("/signup/success");
