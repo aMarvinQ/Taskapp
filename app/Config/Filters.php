@@ -114,7 +114,8 @@ class Filters extends BaseFilters
             'before' => [
                 'task(/*)?',
                 'admin/*',
-                'profile/*'
+                'profile/*',
+                'profileimage/*'
             ]
         ],
         'admin' => [

@@ -18,4 +18,6 @@
 
 <a href="<?= site_url("/profile/editpassword") ?>">Cambiar contraseña</a>
 
+<a href="<?= site_url("/profileimage/edit") ?>">Cambiar foto de perfil</a>
+
 <?= $this->endSection() ?>
