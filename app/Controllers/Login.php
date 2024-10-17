@@ -6,48 +6,46 @@ class Login extends BaseController
 {
     public function new()
     {
-        return view('Login/new');
+		return view('Login/new');
     }
-
+    
     public function create()
     {
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
-        $remember_me = (bool )$this->request->getPost('remember_me');
-
+		$email = $this->request->getPost('email');
+		$password = $this->request->getPost('password');
+		$remember_me = (bool) $this->request->getPost('remember_me');
+        
         $auth = service('auth');
-
-        if($auth->login($email, $password, $remember_me)) {
-
+        
+        if ($auth->login($email, $password, $remember_me)) {
+            
             $redirect_url = session('redirect_url') ?? '/';
-
-            unset($_SESSION['redirect_url']);
-
+            
+			unset($_SESSION['redirect_url']);
+            
             return redirect()->to($redirect_url)
-                                ->with('info', 'Sesión iniciada')
-                                ->withCookies();
-
+                            ->with('info', 'Login successful')
+                            ->withCookies();
+                            
         } else {
-
+            
             return redirect()->back()
-                            ->with('warning', 'Error al iniciar sesión')
-                            ->withInput();
-
+                            ->withInput()
+                            ->with('warning', 'Invalid login');
         }
-
     }
-
+    
     public function delete()
     {
-
         service('auth')->logout();
 
-        return redirect()->to('/login/showLogoutMessage');
+        return redirect()->to('/login/showLogoutMessage')
+                        ->withCookies();
     }
-
+    
     public function showLogoutMessage()
     {
         return redirect()->to('/')
-                        ->with('info', 'Has cerrado sesión');
-    }
+                        ->with('info', 'Logout successful');
+    }    
 }
