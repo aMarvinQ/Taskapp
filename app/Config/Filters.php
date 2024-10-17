@@ -113,7 +113,8 @@ class Filters extends BaseFilters
         'login' => [
             'before' => [
                 'task(/*)?',
-                'admin/*'
+                'admin/*',
+                'profile/*'
             ]
         ],
         'admin' => [

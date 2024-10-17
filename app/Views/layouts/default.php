@@ -13,6 +13,8 @@
 
         <p>¡Hola <?= esc(current_user()->name) ?>!</p>
 
+        <a href="<?= site_url("/profile/show") ?>">Perfil</a>
+
         <?php if (current_user()->is_admin): ?>
                 <a href="<?= site_url("/admin/users") ?>">Usuarios</a>
         <?php endif; ?>
