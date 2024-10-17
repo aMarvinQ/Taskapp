@@ -20,6 +20,8 @@
 
         <button>Iniciar sesión</button>
 
+        <a href="<?= site_url("/password/forgot") ?>">¿Olvidaste tu contraseña?</a>
+
     </form>
 
 <?= $this->endSection() ?>

@@ -120,6 +120,11 @@ class Filters extends BaseFilters
             'before' => [
                 'admin/*'
             ]
+        ],
+        'guest' => [
+            'before' => [
+                'password/*'
+            ]
         ]
     ];
 }
