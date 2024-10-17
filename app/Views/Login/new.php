@@ -18,6 +18,13 @@
             <input type="password" name="password">
         </div>
 
+        <div>
+            <label for="remember_me">
+                <input type="checkbox" id="remember_me" name="remember_me"
+                    <?php if (old('remember_me')): ?>checked<?php endif; ?>>Recuerdame
+            </label>
+        </div>
+
         <button>Iniciar sesión</button>
 
         <a href="<?= site_url("/password/forgot") ?>">¿Olvidaste tu contraseña?</a>
