@@ -51,6 +51,43 @@ class Profileimage extends BaseController
             ->fit(200, 200, 'center')
             ->save($path);
 
-        dd($path);
+        $user = service('auth')->getCurrentUser();
+
+        $user->profile_image = $file->getName();
+
+        $model = new \App\Models\UserModel;
+
+        $model->protect(false)
+            ->save($user);
+
+        return redirect()->to("/profile/show")
+                        ->with('info', 'Imagen cargada exitosamente');
+    }
+
+    public function delete()
+    {
+        if ($this->request->getMethod() === 'POST'){
+
+            $user = service('auth')->getCurrentUser();
+
+            $path = WRITEPATH . 'uploads/profile_images/' . $user->profile_image;
+
+            if (is_file($path)) {
+
+                unlink($path);
+            }
+            
+            $user->profile_image = null;
+
+            $model = new \App\Models\UserModel;
+
+            $model->protect(false)
+                ->save($user);
+
+            return redirect()->to('/profile/show')
+                            ->with('info', 'Imagen eliminada');
+        }
+        
+        return view ('Profileimage/delete');
     }
 }
