@@ -4,18 +4,33 @@
 
 <?= $this->section('content') ?> 
 
-<h1>Editar foto de perfil</h1>
+<h1 class="title">Editar foto de perfil</h1>
 
-<?= form_open_multipart("/profileimage/update") ?>
+<div class="container">
+    <?= form_open_multipart("/profileimage/update") ?>
+    
+        <div class="file is-boxed">
+            <label class="file-label">
+                <input class="file-input" type="file" name="image" />
+                <span class="file-cta">
+                    <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                    </span>
+                    <span class="file-label"> Elige un archivo… </span>
+                </span>
+            </label>
+        </div>
+    
+        <div class="field is-grouped">
+            <div class="control">
+                <button class="button is-primary">Subir</button>
+            </div>
 
-    <div>
-        <label for="image">Archivo</label>
-        <input type="file" name="image" id="image" />
-    </div>
-
-    <button>Subir</button>
-    <a href="<?= site_url("/profile/show") ?>">Cancelar</a>
-
-</form>
+            <div class="control">
+                <a class="button" href="<?= site_url("/profile/show") ?>">Cancelar</a>
+            </div>
+        </div>
+    </form>
+</div>
 
 <?= $this->endSection() ?>

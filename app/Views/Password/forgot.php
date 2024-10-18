@@ -4,7 +4,7 @@
 
 <?= $this->section('content') ?>
 
-<h1>Recupera tu contraseña</h1>
+<h1 class="title">Recupera tu contraseña</h1>
 
 <?= form_open("/password/processforgot") ?>
 

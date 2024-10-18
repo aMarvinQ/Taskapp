@@ -4,7 +4,7 @@
 
 <?= $this->section('content') ?>
 
-<h1>Restablece tu contraseña</h1>
+<h1 class="title">Restablece tu contraseña</h1>
 
 <p>Contraseña restablecida exitosamente</p>
 

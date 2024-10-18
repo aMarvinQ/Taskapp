@@ -4,29 +4,35 @@
 
 <?= $this->section('content') ?>
 
-    <h1>Tareas</h1>
-
-    <a href="<?= site_url('/task/new') ?>">Nueva tarea</a>
-
-    <div>
-        <label for="query">Buscar</label>
-        <input name="query" id="query">
+    <h1 class="title">Tareas</h1>
+    <div class="field">
+        <a class="button is-link" href="<?= site_url('/task/new') ?>">Nueva tarea</a>
     </div>
 
+    <div class="field">
+        <label class="help" for="query">Buscador</label>
+        <input placeholder="Busca una tarea" class="input is-info" name="query" id="query">
+    </div>
+
+    
     <?php if ($tasks): ?>
-        <ul>
-            <?php foreach($tasks as $task): ?>
+        <div class="field">
+        <aside class="menu">
+            <ul class="menu-list">
+                <?php foreach($tasks as $task): ?>
 
-                <li>
-                    <a href="<?= site_url('/task/show/' . $task->id) ?>">
-                    <?= esc($task->description) ?>
-                    </a>
-                </li>
+                    <li>
+                        <a href="<?= site_url('/task/show/' . $task->id) ?>">
+                        <?= esc($task->description) ?>
+                        </a>
+                    </li>
+                
+                <?php endforeach; ?>
+            </ul>
+        </aside>
+        </div>
 
-            <?php endforeach; ?>
-        </ul>
-
-    <?= $pager->links() ?>
+    <?= $pager->simplelinks() ?>
     <?php else: ?>
 
         <p>No se encuentran tareas.</p>

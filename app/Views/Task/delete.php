@@ -4,15 +4,21 @@
 
 <?= $this->section('content') ?>
 
-<h1>Eliminar tarea</h1>
+<h1 class="title">Eliminar tarea</h1>
 
-<p>¿Está seguro?</p>
+<div class="container">
+    <div class="field">
+        <p>¿Está seguro?</p>
+    </div>
 
-<?= form_open("/task/delete/" . $task->id) ?>
+    <?= form_open("/task/delete/" . $task->id) ?>
 
-    <button>Aceptar</button>
-    <a href="<?= site_url('/task/show/' . $task->id) ?>">Cancelar</a>
+    <div class="field is-grouped">
+        <button class="button is-primary">Aceptar</button>
+        <a class="button" href="<?= site_url('/task/show/' . $task->id) ?>">Cancelar</a>
+    </div>
 
-</form>
+    </form>
+</div>
 
 <?= $this->endSection() ?>

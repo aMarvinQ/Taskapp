@@ -4,7 +4,7 @@
 
 <?= $this->section('content') ?> 
 
-<h1>Editar tarea</h1>
+<h1 class="title">Editar tarea</h1>
 
 <?php if (session()->has('errors')): ?>
     <ul>
@@ -14,13 +14,24 @@
     </ul>
 <?php endif ?>
 
-<?= form_open('/task/update/' . $task->id) ?>
+<div class="container">
+    <?= form_open('/task/update/' . $task->id) ?>
+        
+        <div class="field">
+            <?= $this->include('Task/form') ?>
+        </div>
 
-    <?= $this->include('Task/form') ?>
+        <div class="field is-grouped">
+            <div class="control">
+                <button class="button is-primary">Guardar</button>
+            </div>
 
-    <button>Guardar</button>
-    <a href="<?= site_url('/task/show/' . $task->id) ?>">Cancelar</a>
+            <div class="control">
+                <a class="button" href="<?= site_url('/task/show/' . $task->id) ?>">Cancelar</a>
+            </div>
+        </div>
 
-</form>
+    </form>
+</div>
 
 <?= $this->endSection() ?>

@@ -4,7 +4,7 @@
 
 <?= $this->section('content') ?> 
 
-<h1>Editar contraseña</h1>
+<h1 class="title">Editar contraseña</h1>
 
 <?php if (session()->has('errors')): ?>
     <ul>
@@ -14,26 +14,43 @@
     </ul>
 <?php endif ?>
 
-<?= form_open('/profile/updatepassword') ?>
+<div class="container">
+    <?= form_open('/profile/updatepassword') ?>
 
-    <div>
-        <label for="current_password">Contraseña actual</label>
-        <input type="password" name="current_password">
-    </div>
+        <div class="field">
+            <label class="label" for="current_password">Contraseña actual</label>
 
-    <div>
-        <label for="password">Nueva contraseña</label>
-        <input type="password" name="password">
-    </div>
+            <div class="control">
+                <input class="input" type="password" name="current_password">
+            </div>
+        </div>
 
-    <div>
-        <label for="password_confirmation">Confirma tu nueva contraseña</label>
-        <input type="password" name="password_confirmation">
-    </div>
+        <div class="field">
+            <label class="label" for="password">Nueva contraseña</label>
 
-    <button>Guardar</button>
-    <a href="<?= site_url('/profile/show') ?>">Cancelar</a>
+            <div class="control">
+                <input class="input" type="password" name="password">
+            </div>
+        </div>
 
-</form>
+        <div class="field">
+            <label class="label" for="password_confirmation">Confirma tu nueva contraseña</label>
+            
+            <div class="control">
+                <input class="input" type="password" name="password_confirmation">
+            </div>
+        </div>
+        
+        <div class="field is-grouped">
+            <div class="control">
+                <button class="button is-primary">Guardar</button>
+            </div>
+
+            <div class="control">
+                <a class="button" href="<?= site_url('/profile/show') ?>">Cancelar</a>
+            </div>
+        </div>
+    </form>
+</div>
 
 <?= $this->endSection() ?>

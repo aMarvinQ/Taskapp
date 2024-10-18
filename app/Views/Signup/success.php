@@ -4,7 +4,7 @@
 
 <?= $this->section('content') ?>
 
-    <h1>Registro</h1>
+    <h1 class="title">Registro</h1>
 
     <p>Registro exitoso.</p>
 

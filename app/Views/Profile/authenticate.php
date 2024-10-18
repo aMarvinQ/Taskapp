@@ -4,20 +4,32 @@
 
 <?= $this->section('content') ?>
 
-<h1>Editar perfil</h1>
+<h1 class="title">Editar perfil</h1>
 
-<p>Por favor a continuación ingresa tu contraseña</p>
+<div class="container">
+    <p class="content">Por favor a continuación ingresa tu contraseña</p>
 
-<?= form_open("/profile/processauthenticate") ?>
+    <?= form_open("/profile/processauthenticate") ?>
 
-    <div>
-        <label for="password">Contraseña</label>
-        <input type="password" name="password">
-    </div>
+        <div class="field">
+            <label class="label" for="password">Contraseña</label>
 
-    <button>Confirmar</button>
-    <a href="<?= site_url("/profile/show") ?>">Cancelar</a>
+            <div class="control">
+                <input class="input" type="password" name="password">
+            </div>
+        </div>
+        
+        <div class="field is-grouped">
+            <div class="control">
+                <button class="button is-primary">Confirmar</button>
+            </div>
 
-</form>
+            <div class="control">
+                <a class="button" href="<?= site_url("/profile/show") ?>">Cancelar</a>
+            </div>
+        </div>
+
+    </form>
+</div>
 
 <?= $this->endSection() ?>

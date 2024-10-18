@@ -4,12 +4,12 @@
 
 <?= $this->section('content') ?>
 
-    <h1>Usuarios</h1>
+    <h1 class="title">Usuarios</h1>
 
-    <a href="<?= site_url('/admin/users/new') ?>">Nuevo Usuario</a>
+    <a class="button is-link" href="<?= site_url('/admin/users/new') ?>">Nuevo Usuario</a>
 
     <?php if ($users): ?>
-        <table>
+        <table class="table">
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -36,7 +36,7 @@
                 <?php endforeach; ?>
         </table>
 
-    <?= $pager->links() ?>
+    <?= $pager->simplelinks() ?>
     <?php else: ?>
 
         <p>No se encuentran usuarios.</p>

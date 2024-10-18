@@ -4,7 +4,7 @@
 
 <?= $this->section('content') ?>
 
-<h1>Eliminar foto de perfil</h1>
+<h1 class="title">Eliminar foto de perfil</h1>
 
 <p>¿Está seguro?</p>
 

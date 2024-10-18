@@ -4,24 +4,27 @@
 
 <?= $this->section('content') ?>
 
-    <h1>Tarea</h1>
+    <h1 class="title">Tarea</h1>
     
-    <a href="<?= site_url('/task/index') ?>">&laquo; regresar al inicio</a>
-    <dl>
-        <dt>ID</dt>
-        <dd><?= $task->id ?></dd>
-    
-        <dt>Descripción</dt>
-        <dd><?= esc($task->description) ?></dd>
+    <a class="button is-link" href="<?= site_url('/task/index') ?>">&laquo; regresar al inicio</a>
 
-        <dt>Creado el </dt>
-        <dd><?= $task->created_at ?></dd>
+    <div class="content">
+        <dl>
+            <dt class="has-text-weight-bold">Identificador</dt>
+            <dd><?= $task->id ?></dd>
 
-        <dt>Actualizado el </dt>
-        <dd><?= $task->updated_at ?></dd>
-    </dl>
+            <dt class="has-text-weight-bold">Descripción</dt>
+            <dd><?= esc($task->description) ?></dd>
 
-<a href="<?= site_url('/task/edit/' . $task->id) ?>">Editar</a>
-<a href="<?= site_url('/task/delete/' . $task->id) ?>">Eliminar</a>
+            <dt class="has-text-weight-bold">Creado el </dt>
+            <dd><?= $task->created_at->humanize() ?></dd>
+
+            <dt class="has-text-weight-bold">Actualizado el </dt>
+            <dd><?= $task->updated_at->humanize() ?></dd>
+        </dl>
+    </div>
+
+<a class="button is-link" href="<?= site_url('/task/edit/' . $task->id) ?>">Editar</a>
+<a class="button is-danger" href="<?= site_url('/task/delete/' . $task->id) ?>">Eliminar</a>
 
 <?= $this->endSection() ?>

@@ -4,15 +4,21 @@
 
 <?= $this->section('content') ?>
 
-<h1>Eliminar usuario</h1>
+<h1 class="title">Eliminar usuario</h1>
 
-<p>¿Está seguro?</p>
+<div class="container">
+    <div class="field">
+        <p>¿Está seguro?</p>
+    </div>
 
-<?= form_open("/admin/users/delete/" . $user->id) ?>
+    <?= form_open("/admin/users/delete/" . $user->id) ?>
 
-    <button>Aceptar</button>
-    <a href="<?= site_url('/admin/users/show/' . $user->id) ?>">Cancelar</a>
+        <div class="field is-grouped">
+            <button class="button is-primary">Aceptar</button>
+            <a class="button" href="<?= site_url('/admin/users/show/' . $user->id) ?>">Cancelar</a>
+        </div>
 
-</form>
+    </form>
+</div>
 
 <?= $this->endSection() ?>

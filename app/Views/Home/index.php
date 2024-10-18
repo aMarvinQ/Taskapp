@@ -4,6 +4,6 @@
 
 <?= $this->section('content')?>
 
-    <h1>Bienvenido</h1>
+    <h1 class="title">Bienvenido</h1>
 
 <?= $this->endSection()?>
