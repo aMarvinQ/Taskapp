@@ -14,19 +14,23 @@
     </ul>
 <?php endif; ?>
 
-<?= form_open("/password/processreset/$token") ?>
-    
-    <div>
-        <label for="password">Contraseña</label>
-        <input type="password" name="password">
-    </div>
+<div class="container">
+    <?= form_open("/password/processreset/$token") ?>
+            
+        <div class="field">
+            <label class="label" for="password">Contraseña</label>
+            <input class="input" type="password" name="password">
+        </div>
 
-    <div>
-        <label for="password_confirmation">Confirma la contraseña</label>
-        <input type="password" name="password_confirmation">
-    </div>
-
-    <button>Restablecer</button>
-</form>
+        <div class="field">
+            <label class="label" for="password_confirmation">Confirma la contraseña</label>
+            <input class="input"type="password" name="password_confirmation">
+        </div>
+        
+        <div class="field">
+            <button class="button is-primary">Restablecer</button>
+        </div>
+    </form>
+</div>
 
 <?= $this->endSection() ?>

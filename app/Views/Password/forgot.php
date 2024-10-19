@@ -6,15 +6,19 @@
 
 <h1 class="title">Recupera tu contraseña</h1>
 
-<?= form_open("/password/processforgot") ?>
-
-    <div>
-        <label for="email">Correo electrónico</label>
-        <input type="text" name="email" id="email" value="<?= old('email') ?>">
+<div class="container">
+    <div class="field">
+        <?= form_open("/password/processforgot") ?>
     </div>
 
-    <button>Enviar</button>
+    <div class="field">
+        <label class="label"for="email">Correo electrónico</label>
+        <input class="input" type="text" name="email" id="email" value="<?= old('email') ?>">
+    </div>
+    
+    <button class="button is-primary">Enviar</button>
 
-</form>
+    </form>
+</div>
 
 <?= $this->endSection() ?>
